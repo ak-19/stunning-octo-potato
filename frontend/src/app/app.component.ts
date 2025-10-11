@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
-import { TitleCasePipe } from '@angular/common';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
   standalone: true,
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
-  imports: [TitleCasePipe],
+  imports: [RouterOutlet],
 })
 export class AppComponent {
-  title = 'frontend';
+  title = 'Stunning Octo Potato';
 }

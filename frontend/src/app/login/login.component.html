@@ -1,0 +1,49 @@
+<section class="login-card" aria-labelledby="login-title">
+  <form [formGroup]="loginForm" (ngSubmit)="submit()">
+    <h2 id="login-title">Sign in</h2>
+    <p class="hint">Use <strong>admin</strong> / <strong>password123</strong> to log in.</p>
+
+    <label class="field">
+      <span>Username</span>
+      <input
+        type="text"
+        formControlName="username"
+        autocomplete="username"
+        [class.invalid]="loginForm.controls.username.touched && loginForm.controls.username.invalid"
+      />
+      <small *ngIf="loginForm.controls.username.touched && loginForm.controls.username.hasError('required')">
+        Username is required.
+      </small>
+    </label>
+
+    <label class="field">
+      <span>Password</span>
+      <input
+        type="password"
+        formControlName="password"
+        autocomplete="current-password"
+        [class.invalid]="loginForm.controls.password.touched && loginForm.controls.password.invalid"
+      />
+      <small *ngIf="loginForm.controls.password.touched && loginForm.controls.password.hasError('required')">
+        Password is required.
+      </small>
+    </label>
+
+    <button type="submit" [disabled]="loading || loginForm.invalid">
+      <span *ngIf="!loading">Sign in</span>
+      <span *ngIf="loading">Signing in…</span>
+    </button>
+  </form>
+
+  <p *ngIf="errorMessage" class="message error" role="alert">{{ errorMessage }}</p>
+  <p *ngIf="successMessage" class="message success" role="status">
+    {{ successMessage }}
+  </p>
+
+  <dl *ngIf="lastResponse" class="token-preview">
+    <dt>Token</dt>
+    <dd>{{ lastResponse.tokenType }} {{ lastResponse.accessToken }}</dd>
+    <dt>User</dt>
+    <dd>{{ lastResponse.user.username }} ({{ lastResponse.user.displayName }})</dd>
+  </dl>
+</section>
