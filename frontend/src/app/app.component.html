@@ -8,7 +8,8 @@
     </div>
 
     <nav *ngIf="isAuthenticated$ | async" aria-label="Primary">
-      <a routerLink="/videos">All Videos</a>
+      <a routerLink="/videos" routerLinkActive="active-link">All Videos</a>
+      <a routerLink="/my-videos" routerLinkActive="active-link">My Videos</a>
       <button type="button" (click)="logout()">Log out</button>
     </nav>
   </header>

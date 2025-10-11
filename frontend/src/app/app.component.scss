@@ -44,6 +44,11 @@
   background-color: rgba(37, 99, 235, 0.12);
 }
 
+.app-header nav a.active-link {
+  background-color: #1d4ed8;
+  color: #ffffff;
+}
+
 .app-header nav button {
   cursor: pointer;
   border: none;

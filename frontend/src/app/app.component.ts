@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { Router, RouterLink, RouterOutlet } from '@angular/router';
+import { Router, RouterLink, RouterOutlet, RouterLinkActive } from '@angular/router';
 import { AsyncPipe, NgIf } from '@angular/common';
 import { AuthService } from './services/auth.service';
 
@@ -8,7 +8,7 @@ import { AuthService } from './services/auth.service';
   standalone: true,
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
-  imports: [RouterOutlet, RouterLink, NgIf, AsyncPipe],
+  imports: [RouterOutlet, RouterLink, RouterLinkActive, NgIf, AsyncPipe],
 })
 export class AppComponent {
   private readonly authService = inject(AuthService);
