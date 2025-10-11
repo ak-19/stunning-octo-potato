@@ -7,6 +7,7 @@ import {
 } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { AuthService, LoginResponse } from '../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -18,6 +19,7 @@ import { AuthService, LoginResponse } from '../services/auth.service';
 export class LoginComponent implements OnDestroy {
   private readonly fb = inject(FormBuilder);
   private readonly authService = inject(AuthService);
+  private readonly router = inject(Router);
   private readonly subscriptions = new Subscription();
 
   readonly loginForm = this.fb.nonNullable.group({
@@ -48,6 +50,7 @@ export class LoginComponent implements OnDestroy {
           this.lastResponse = response;
           this.successMessage = `Welcome back, ${response.user.displayName}!`;
           this.loading = false;
+          this.router.navigateByUrl('/videos');
         },
         error: (error) => {
           if (error.status === 401) {

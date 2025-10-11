@@ -3,9 +3,12 @@ import { provideRouter, Routes } from '@angular/router';
 import { provideHttpClient } from '@angular/common/http';
 import { AppComponent } from './app/app.component';
 import { LoginComponent } from './app/login/login.component';
+import { VideosComponent } from './app/videos/videos.component';
+import { authGuard } from './app/services/auth.guard';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
+  { path: 'videos', component: VideosComponent, canActivate: [authGuard] },
   { path: '**', redirectTo: '' },
 ];
 

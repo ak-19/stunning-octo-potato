@@ -1,0 +1,24 @@
+<section class="videos-view">
+  <ng-container *ngIf="videos$ | async as videos; else loading">
+    <p *ngIf="!videos.length" class="empty">No videos found.</p>
+
+    <ul *ngIf="videos.length" class="videos-grid" aria-label="Available videos">
+      <li *ngFor="let video of videos">
+        <article>
+          <img [src]="video.thumbnailUrl" [alt]="video.title" />
+          <div class="details">
+            <header>
+              <h2>{{ video.title }}</h2>
+              <span class="duration">{{ video.duration }}</span>
+            </header>
+            <p>{{ video.description }}</p>
+          </div>
+        </article>
+      </li>
+    </ul>
+  </ng-container>
+
+  <ng-template #loading>
+    <p class="loading">Loading videos…</p>
+  </ng-template>
+</section>

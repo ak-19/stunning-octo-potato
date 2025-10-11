@@ -1,10 +1,23 @@
 <div class="shell">
   <header class="app-header">
-    <h1>{{ title }}</h1>
-    <p>Sign in below to access the application.</p>
+    <div>
+      <h1>{{ title }}</h1>
+      <p *ngIf="isAuthenticated$ | async; else signInCopy">
+        Browse the latest videos and tutorials.
+      </p>
+    </div>
+
+    <nav *ngIf="isAuthenticated$ | async" aria-label="Primary">
+      <a routerLink="/videos">All Videos</a>
+      <button type="button" (click)="logout()">Log out</button>
+    </nav>
   </header>
 
   <main class="container">
     <router-outlet />
   </main>
 </div>
+
+<ng-template #signInCopy>
+  <p>Sign in below to access the application.</p>
+</ng-template>
