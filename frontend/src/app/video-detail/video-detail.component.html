@@ -4,6 +4,7 @@
       <div class="video-wrapper">
         <video
           controls
+          preload="metadata"
           [src]="video.videoUrl"
           [poster]="video.thumbnailUrl"
           (error)="onVideoError($event)"
