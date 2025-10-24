@@ -123,7 +123,7 @@ export class VideosService {
           timestamps: ['5%'],
           filename: path.basename(thumbnailPath),
           folder: path.dirname(thumbnailPath),
-          size: '320x180',
+          size: '320x?',
         })
         .on('end', () => resolve())
         .on('error', (err) => reject(err));
