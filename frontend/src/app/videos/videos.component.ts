@@ -12,4 +12,9 @@ import { VideosService } from '../services/videos.service';
 export class VideosComponent {
   private readonly videosService = inject(VideosService);
   readonly videos$ = this.videosService.getVideos();
+
+  onImageError(event: Event): void {
+    const img = event.target as HTMLImageElement;
+    img.src = 'https://placehold.co/320x180?text=No+Thumbnail';
+  }
 }

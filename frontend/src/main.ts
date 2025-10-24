@@ -5,12 +5,14 @@ import { AppComponent } from './app/app.component';
 import { LoginComponent } from './app/login/login.component';
 import { VideosComponent } from './app/videos/videos.component';
 import { MyVideosComponent } from './app/my-videos/my-videos.component';
+import { UploadVideoComponent } from './app/upload-video/upload-video.component';
 import { authGuard } from './app/services/auth.guard';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
   { path: 'videos', component: VideosComponent, canActivate: [authGuard] },
   { path: 'my-videos', component: MyVideosComponent, canActivate: [authGuard] },
+  { path: 'upload', component: UploadVideoComponent, canActivate: [authGuard] },
   { path: '**', redirectTo: '' },
 ];
 

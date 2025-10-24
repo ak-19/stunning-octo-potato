@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 export interface VideoDto {
@@ -8,6 +8,14 @@ export interface VideoDto {
   description: string;
   thumbnailUrl: string;
   duration: string;
+  videoUrl?: string;
+  userId?: string;
+  uploadedAt?: Date;
+}
+
+export interface UploadVideoDto {
+  title: string;
+  description: string;
 }
 
 @Injectable({
@@ -20,5 +28,27 @@ export class VideosService {
 
   getVideos(): Observable<VideoDto[]> {
     return this.http.get<VideoDto[]>(`${this.baseUrl}/videos`);
+  }
+
+  getMyVideos(): Observable<VideoDto[]> {
+    const token = localStorage.getItem('demo-auth-token');
+    const headers = new HttpHeaders({
+      Authorization: token || '',
+    });
+    return this.http.get<VideoDto[]>(`${this.baseUrl}/videos/my-videos`, { headers });
+  }
+
+  uploadVideo(file: File, videoData: UploadVideoDto): Observable<VideoDto> {
+    const token = localStorage.getItem('demo-auth-token');
+    const formData = new FormData();
+    formData.append('video', file);
+    formData.append('title', videoData.title);
+    formData.append('description', videoData.description);
+
+    const headers = new HttpHeaders({
+      Authorization: token || '',
+    });
+
+    return this.http.post<VideoDto>(`${this.baseUrl}/videos/upload`, formData, { headers });
   }
 }

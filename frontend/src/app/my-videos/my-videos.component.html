@@ -1,11 +1,33 @@
 <section class="my-videos">
   <header>
-    <h2>{{ title }}</h2>
-    <p>{{ description }}</p>
+    <h2>My Uploaded Videos</h2>
+    <p>Videos you have uploaded to the platform.</p>
   </header>
 
-  <div class="empty-state">
-    <p>Your saved content will appear here once you start bookmarking videos.</p>
-    <a routerLink="/videos">Browse all videos to get started</a>
-  </div>
-</section>
+  @if (videos$ | async; as videos) {
+    @if (videos.length > 0) {
+      <div class="videos-grid">
+        @for (video of videos; track video.id) {
+          <article class="video-card">
+            <div class="video-thumbnail">
+              <img
+                [src]="video.thumbnailUrl"
+                [alt]="video.title"
+                (error)="onImageError($event)"
+              />
+              <span class="duration">{{ video.duration }}</span>
+            </div>
+            <div class="video-info">
+              <h3>{{ video.title }}</h3>
+              <p>{{ video.description }}</p>
+            </div>
+          </article>
+        }
+      </div>
+    } @else {
+      <div class="empty-state">
+        <p>You haven't uploaded any videos yet.</p>
+        <a routerLink="/upload">Upload your first video</a>
+      </div>
+    }
+  }</section>

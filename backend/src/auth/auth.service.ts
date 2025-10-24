@@ -39,4 +39,28 @@ export class AuthService {
     };
     return Buffer.from(JSON.stringify(payload)).toString('base64url');
   }
+
+  validateToken(token: string): AuthenticatedUserDto | null {
+    try {
+      const decoded = JSON.parse(
+        Buffer.from(token, 'base64url').toString('utf-8'),
+      );
+
+      if (!decoded.sub || typeof decoded.sub !== 'string') {
+        return null;
+      }
+
+      // For demo purposes, we only have one user
+      if (decoded.sub === this.demoUser.username) {
+        return {
+          username: this.demoUser.username,
+          displayName: this.demoUser.displayName,
+        };
+      }
+
+      return null;
+    } catch (error) {
+      return null;
+    }
+  }
 }

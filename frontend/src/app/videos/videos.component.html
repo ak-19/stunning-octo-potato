@@ -5,7 +5,11 @@
     <ul *ngIf="videos.length" class="videos-grid" aria-label="Available videos">
       <li *ngFor="let video of videos">
         <article>
-          <img [src]="video.thumbnailUrl" [alt]="video.title" />
+          <img
+            [src]="video.thumbnailUrl"
+            [alt]="video.title"
+            (error)="onImageError($event)"
+          />
           <div class="details">
             <header>
               <h2>{{ video.title }}</h2>

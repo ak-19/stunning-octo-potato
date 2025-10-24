@@ -10,6 +10,7 @@
     <nav *ngIf="isAuthenticated$ | async" aria-label="Primary">
       <a routerLink="/videos" routerLinkActive="active-link">All Videos</a>
       <a routerLink="/my-videos" routerLinkActive="active-link">My Videos</a>
+      <a routerLink="/upload" routerLinkActive="active-link">Upload</a>
       <button type="button" (click)="logout()">Log out</button>
     </nav>
   </header>
