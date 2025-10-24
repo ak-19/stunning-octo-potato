@@ -1,0 +1,142 @@
+.video-detail-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.video-player-section {
+  margin-bottom: 2rem;
+}
+
+.video-wrapper {
+  position: relative;
+  width: 100%;
+  background: #000;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.video-wrapper video {
+  width: 100%;
+  height: auto;
+  display: block;
+  max-height: 70vh;
+}
+
+.error-message {
+  background-color: #fee;
+  color: #c33;
+  padding: 1rem;
+  border-radius: 4px;
+  margin-top: 1rem;
+  border: 1px solid #fcc;
+  text-align: center;
+}
+
+.video-info-section {
+  background: white;
+  border-radius: 8px;
+  padding: 2rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.video-header {
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.video-header h1 {
+  margin: 0 0 1rem 0;
+  font-size: 2rem;
+  color: #1e293b;
+  font-weight: 600;
+}
+
+.video-metadata {
+  display: flex;
+  gap: 2rem;
+  font-size: 0.875rem;
+  color: #64748b;
+}
+
+.video-metadata span {
+  display: flex;
+  align-items: center;
+}
+
+.duration::before {
+  content: '⏱';
+  margin-right: 0.5rem;
+}
+
+.upload-date::before {
+  content: '📅';
+  margin-right: 0.5rem;
+}
+
+.video-description {
+  margin-bottom: 2rem;
+}
+
+.video-description h2 {
+  margin: 0 0 1rem 0;
+  font-size: 1.25rem;
+  color: #334155;
+  font-weight: 600;
+}
+
+.video-description p {
+  margin: 0;
+  color: #475569;
+  line-height: 1.6;
+  white-space: pre-wrap;
+}
+
+.actions {
+  display: flex;
+  gap: 1rem;
+}
+
+.back-button {
+  padding: 0.75rem 1.5rem;
+  background-color: #6c757d;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.back-button:hover {
+  background-color: #545b62;
+}
+
+.loading {
+  text-align: center;
+  padding: 4rem 2rem;
+  color: #64748b;
+  font-size: 1.125rem;
+}
+
+@media (max-width: 768px) {
+  .video-detail-container {
+    padding: 1rem;
+  }
+
+  .video-header h1 {
+    font-size: 1.5rem;
+  }
+
+  .video-metadata {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .video-info-section {
+    padding: 1.5rem;
+  }
+}

@@ -8,6 +8,8 @@ import {
   UploadedFile,
   Req,
   BadRequestException,
+  Param,
+  NotFoundException,
 } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { VideosService } from './videos.service';
@@ -29,6 +31,15 @@ export class VideosController {
   getMyVideos(@Req() request: any): Video[] {
     const userId = request.user.username;
     return this.videosService.findByUser(userId);
+  }
+
+  @Get(':id')
+  findOne(@Param('id') id: string): Video {
+    const video = this.videosService.findOne(+id);
+    if (!video) {
+      throw new NotFoundException(`Video with ID ${id} not found`);
+    }
+    return video;
   }
 
   @Post('upload')

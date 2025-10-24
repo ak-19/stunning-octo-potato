@@ -1,0 +1,51 @@
+<div class="video-detail-container">
+  @if (video$ | async; as video) {
+    <div class="video-player-section">
+      <div class="video-wrapper">
+        <video
+          controls
+          [src]="video.videoUrl"
+          [poster]="video.thumbnailUrl"
+          (error)="onVideoError($event)"
+        >
+          Your browser does not support the video tag.
+        </video>
+      </div>
+
+      @if (errorMessage) {
+        <div class="error-message">
+          {{ errorMessage }}
+        </div>
+      }
+    </div>
+
+    <div class="video-info-section">
+      <div class="video-header">
+        <h1>{{ video.title }}</h1>
+        <div class="video-metadata">
+          <span class="duration">Duration: {{ video.duration }}</span>
+          @if (video.uploadedAt) {
+            <span class="upload-date">
+              Uploaded: {{ video.uploadedAt | date: 'mediumDate' }}
+            </span>
+          }
+        </div>
+      </div>
+
+      <div class="video-description">
+        <h2>Description</h2>
+        <p>{{ video.description }}</p>
+      </div>
+
+      <div class="actions">
+        <button type="button" class="back-button" (click)="goBack()">
+          Back to Videos
+        </button>
+      </div>
+    </div>
+  } @else {
+    <div class="loading">
+      <p>Loading video...</p>
+    </div>
+  }
+</div>

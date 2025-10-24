@@ -62,6 +62,12 @@ p {
   transform: translateY(-2px);
 }
 
+.video-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
 .video-thumbnail {
   position: relative;
   width: 100%;

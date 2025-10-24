@@ -1,5 +1,6 @@
 import { AsyncPipe, NgIf, NgFor } from '@angular/common';
 import { Component, inject } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { VideosService } from '../services/videos.service';
 
 @Component({
@@ -7,7 +8,7 @@ import { VideosService } from '../services/videos.service';
   standalone: true,
   templateUrl: './videos.component.html',
   styleUrls: ['./videos.component.scss'],
-  imports: [NgIf, NgFor, AsyncPipe],
+  imports: [NgIf, NgFor, AsyncPipe, RouterLink],
 })
 export class VideosComponent {
   private readonly videosService = inject(VideosService);

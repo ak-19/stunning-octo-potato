@@ -48,6 +48,10 @@ export class VideosService {
     return this.videos;
   }
 
+  findOne(id: number): Video | undefined {
+    return this.videos.find((video) => video.id === id);
+  }
+
   findByUser(userId: string): Video[] {
     return this.videos.filter((video) => video.userId === userId);
   }

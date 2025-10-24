@@ -30,6 +30,10 @@ export class VideosService {
     return this.http.get<VideoDto[]>(`${this.baseUrl}/videos`);
   }
 
+  getVideo(id: number): Observable<VideoDto> {
+    return this.http.get<VideoDto>(`${this.baseUrl}/videos/${id}`);
+  }
+
   getMyVideos(): Observable<VideoDto[]> {
     const token = localStorage.getItem('demo-auth-token');
     const headers = new HttpHeaders({

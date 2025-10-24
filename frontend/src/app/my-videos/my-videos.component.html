@@ -9,18 +9,20 @@
       <div class="videos-grid">
         @for (video of videos; track video.id) {
           <article class="video-card">
-            <div class="video-thumbnail">
-              <img
-                [src]="video.thumbnailUrl"
-                [alt]="video.title"
-                (error)="onImageError($event)"
-              />
-              <span class="duration">{{ video.duration }}</span>
-            </div>
-            <div class="video-info">
-              <h3>{{ video.title }}</h3>
-              <p>{{ video.description }}</p>
-            </div>
+            <a [routerLink]="['/videos', video.id]" class="video-link">
+              <div class="video-thumbnail">
+                <img
+                  [src]="video.thumbnailUrl"
+                  [alt]="video.title"
+                  (error)="onImageError($event)"
+                />
+                <span class="duration">{{ video.duration }}</span>
+              </div>
+              <div class="video-info">
+                <h3>{{ video.title }}</h3>
+                <p>{{ video.description }}</p>
+              </div>
+            </a>
           </article>
         }
       </div>
